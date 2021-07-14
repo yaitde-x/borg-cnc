@@ -1,0 +1,65 @@
+import time
+import serial
+import json
+from flask import Flask
+from flask import request
+
+app = Flask(__name__)
+    
+# Open grbl serial port
+s = serial.Serial('/dev/ttyACM0', 115200)
+
+def exec_cmd(cmd, newline = True):
+
+        s.write(cmd.encode())
+
+        if newline:
+            s.write("\n".encode())
+    
+        resp = ''
+
+        while 1:
+            grbl_out = s.readline().decode('utf8').strip()  # Wait for grbl response with carriage return
+            
+            if grbl_out.find("Grbl") >= 0:
+                resp = ''
+            elif grbl_out.find("ok") >= 0:
+                break
+            elif grbl_out.find("error") >= 0:
+                break
+            else:
+                resp += grbl_out
+
+        return resp   
+
+@app.route('/api/machine/settings')
+def get_settings():
+
+    return exec_cmd('$$')
+
+@app.route('/api/machine/parameters')
+def get_parameters():
+
+    return exec_cmd('$#')
+
+@app.route('/api/machine/state')
+def get_state():
+
+    return exec_cmd('?')
+
+@app.route('/api/machine/cstate')
+def get_cstate():
+
+    return exec_cmd('$G')
+
+@app.route('/api/machine/home', methods=['POST'])
+def post_home():
+
+    return exec_cmd('$H')
+
+@app.route('/api/machine/runblock', methods=['POST'])
+def post_run():
+    gCodeBlock = request.json
+    #return gCodeBlock['block']
+    exec_cmd(gCodeBlock['block'])
+    return exec_cmd('?') 

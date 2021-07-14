@@ -1,0 +1,4 @@
+namespace Borg.Machine
+{
+  
+}

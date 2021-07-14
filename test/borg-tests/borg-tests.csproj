@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>borg_tests</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+  <EmbeddedResource Include="test_files/elo.gcode" />
+  <EmbeddedResource Include="test_files/elo-expected-analysis.json" />
+    <EmbeddedResource Include="test_files/test-1.ngc" />
+    <EmbeddedResource Include="test_files/meta.json" />
+    <EmbeddedResource Include="test_files/test-1-analysis.json" />
+    <EmbeddedResource Include="test_files/test-1-expected-cell_r0_c0.ngc" />
+    <EmbeddedResource Include="test_files/test-1-expected-cell_r0_c1.ngc" />
+    <EmbeddedResource Include="test_files/test-1-expected-cell_r1_c0.ngc" />
+    <EmbeddedResource Include="test_files/test-1-expected-cell_r1_c1.ngc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\borg-lib\borg-lib.csproj" />
+  </ItemGroup>
+
+</Project>

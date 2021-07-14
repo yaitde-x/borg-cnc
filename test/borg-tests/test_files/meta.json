@@ -1,0 +1,15 @@
+{
+    "id" : "test-1",
+    "name" : "Test 1",
+    "description" : "",
+    "profiles" : [
+        {
+            "id" : "test-1-default",
+            "image" : "",
+            "itemType" : "RS274",
+            "toolProfile" : "default",
+            "spindleProfile" : "default",
+            "relativePath" : "test-1/default/test-1.ngc"
+        }
+    ]
+}

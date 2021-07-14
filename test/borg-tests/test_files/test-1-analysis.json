@@ -1,0 +1,32 @@
+{
+    "Bounds": {
+        "MinX": 0.0,
+        "MaxX": 24.0,
+        "MinY": 0.0,
+        "MaxY": 24.0,
+        "MinZ": -1.27,
+        "MaxZ": 20.0
+    },
+    "FileType": 0,
+    "Feeds": [
+        508.0,
+        1270.0
+    ],
+    "ZFeeds": [
+        508.0
+    ],
+    "XYFeed": [
+        1270.0
+    ],
+    "ZAnalysis" : {
+        "ZMoves": [
+            20.0,
+            2.5,
+            -1.27
+        ],
+        "ZMax": 20.0,
+        "ZClearance": 2.5,
+        "ZCut": -1.27
+    }
+    
+}
